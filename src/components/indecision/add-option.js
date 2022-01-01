@@ -9,7 +9,6 @@ class AddOption extends Component {
 
     addOption(e) {
         e.preventDefault();
-        console.log(e.target.elements.option.value);
         this.props.newOption(e.target.elements.option.value);
     }
 
