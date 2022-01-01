@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import EmployeeList from './components/employee-list.js';
+import CreateEmployee from './components/create-employee.js';
+import Header from './components/header.js';
+import Shopping from './components/shopping.js'
+import Indecision from './components/indecision/indecision';
+
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/emp" element={<EmployeeList />} />
+        <Route path="/create-emp" element={<CreateEmployee />} />
+        <Route path="/shopping" element={<Shopping />}/>
+        <Route path="/indecision" element={<Indecision />}/>
+      </Routes>
     </div>
   );
 }
