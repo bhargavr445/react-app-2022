@@ -1,20 +1,22 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+
 
 function Shopping() {
     return (
         <div>
             <ul>
                 <li>
-                    <Link to="/men">Men</Link>
+                    <Link to="/shopping/men">Men</Link>
                 </li>
                 <li>
-                    <Link to="/women">Women</Link>
+                    <Link to="/shopping/women">Women</Link>
                 </li>
                 <li>
-                    <Link to="/kids">Kids</Link>
+                    <Link to="/shopping/kids">Kids</Link>
                 </li>
             </ul>
+            <Outlet />
         </div>
     )
 }

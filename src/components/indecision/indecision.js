@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddOption from './add-option';
 import Options from './options';
 import IndecisionHeader from './header';
+// import Option from './option';
 
 class Indecision extends Component {
 
@@ -9,15 +10,23 @@ class Indecision extends Component {
         super(props);
         this.removeAllIndecisions = this.removeAllIndecisions.bind(this);
         this.addNewOption = this.addNewOption.bind(this);
+        this.removeOption = this.removeOption.bind(this);
         this.state = {
             options: ['op1', 'op2', 'op3']
         }
     }
 
     removeAllIndecisions() {
-        this.setState(() => {
+        this.setState(() => ({
+            options: []
+        }))
+    }
+
+    removeOption(optionToDelete) {
+        console.log(optionToDelete);
+        this.setState((prevState) => {
             return {
-                options: []
+                options: prevState.options.filter(option => option !== optionToDelete)
             }
         })
     }
@@ -38,6 +47,7 @@ class Indecision extends Component {
                 <Options
                     options={this.state.options}
                     removeAllIndecisionsProp={this.removeAllIndecisions}
+                    removeOptionProp={this.removeOption}
                 />
                 <AddOption newOption={this.addNewOption} />
             </div>

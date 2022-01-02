@@ -1,0 +1,19 @@
+<obj>
+    <name>bhargav</name>
+    <email>bhargavr445@gmail.com</email>
+    <address>
+        <shippingAddress>
+            <street>9335 lee hwy</street>
+            <city>Fairfax</city>
+            <state>Va</state>
+        </shippingAddress>
+        <billingAddress>
+            <street>9890 old dominion dr</street>
+            <city>Herndon</city>
+            <state>Md</state>
+        </billingAddress>
+    </address>
+</obj>
+
+
+
