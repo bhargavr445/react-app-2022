@@ -1,0 +1,30 @@
+{
+    "settings": {
+        "recordAnalytics": false,
+        "enableQueryRules": true
+    },
+    "query": [
+        {
+            "id": "SearchResult",
+            "type": "search",
+            "dataField": [
+                "original_title"
+            ],
+            "execute": true,
+            "react": {
+                "and": [
+                    "BookSensor",
+                    "SearchResult__internal"
+                ]
+            },
+            "size": 10
+        }
+    ]
+}
+
+{
+    [],
+    {}
+}
+
+"{"settings":{"recordAnalytics":false,"enableQueryRules":true},"query":[{"id":"SearchResult","type":"search","dataField":["original_title"],"execute":true,"react":{"and":["BookSensor","SearchResult__internal"]},"size":10,"from":0}]}"
