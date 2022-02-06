@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+    let navigate = useNavigate();
     const [enteredUserName, setEnteredUserName] = useState('');
-    
-    
-    useEffect(() => {
-        console.log('enteredUserName');
-        const timer = setTimeout(() => {
-            //axioscall here
-        }, (500));
-    return () => {
-        clearInterval(timer)
-        clearTimeout(timer)
-    }},['state-here']);
-
-
-
-    useEffect(() => {
-        console.log('Exec....')
-    },[enteredUserName]);
+    const [enteredPassword, setEnteredPassword] = useState('');
 
     const emailChangeHandler = (e) => {
         setEnteredUserName(e.target.value);
+    }
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        let credObj = {};
+        credObj.userName = enteredUserName;
+        credObj.password = enteredPassword;
+        axios.post('http://localhost:3010/api/login', credObj).then(
+            (resp) => {
+                console.log(resp);
+                localStorage.setItem('Authorization', resp.data.data.token);
+                navigate(`/emp`);
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
+    const passwordChangeHandler = (e) => {
+        e.preventDefault();
+        setEnteredPassword(e.target.value);
     }
 
     return (
@@ -34,7 +44,8 @@ const Login = () => {
                     value={enteredUserName}
                     onChange={emailChangeHandler} /> <br />
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" />
+                <input type="password" id="password" onChange={passwordChangeHandler}/>
+                <button type="submit" onClick={submitForm}>Login</button>
             </form>
         </div>
     )

@@ -9,11 +9,13 @@ class EmployeeList extends Component {
             empData: null,
             newData: 10
         }
+
+        this.getEmpData();
     }
 
 
     getEmpData = () => {
-        axios.get('http://universities.hipolabs.com/search').then(data => {
+        axios.get('http://localhost:3010/api/student').then(data => {
             console.log(data);
             this.setState(() => ({
                 empData: data
